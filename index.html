@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuroRewire-Youth | Reprogram Your Mind</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=IBM+Plex+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neural-deep: #0a0e27;
+            --neural-mid: #1a1f3a;
+            --neural-accent: #6366f1;
+            --neural-bright: #818cf8;
+            --neural-electric: #22d3ee;
+            --neural-warn: #f59e0b;
+            --neural-success: #10b981;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --glow: 0 0 20px rgba(99, 102, 241, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'IBM Plex Sans', sans-serif;
+            background: var(--neural-deep);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Animated background */
+        .neural-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.15;
+            background: 
+                radial-gradient(circle at 20% 50%, var(--neural-accent) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, var(--neural-electric) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.15; }
+            50% { opacity: 0.25; }
+        }
+
+        /* Header */
+        header {
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .brain-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--neural-bright), var(--neural-electric));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+            animation: glow-text 2s ease-in-out infinite;
+        }
+
+        @keyframes glow-text {
+            0%, 100% { filter: drop-shadow(0 0 10px rgba(99, 102, 241, 0.5)); }
+            50% { filter: drop-shadow(0 0 20px rgba(99, 102, 241, 0.8)); }
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            font-weight: 300;
+        }
+
+        .creator {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid var(--neural-accent);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: var(--neural-bright);
+            margin-top: 1rem;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Section styling */
+        section {
+            margin: 5rem 0;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        section:nth-child(1) { animation-delay: 0.1s; }
+        section:nth-child(2) { animation-delay: 0.2s; }
+        section:nth-child(3) { animation-delay: 0.3s; }
+        section:nth-child(4) { animation-delay: 0.4s; }
+        section:nth-child(5) { animation-delay: 0.5s; }
+        section:nth-child(6) { animation-delay: 0.6s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+        }
+
+        h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            margin-bottom: 1.5rem;
+            color: var(--neural-bright);
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::before {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--neural-accent), transparent);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+            color: var(--neural-electric);
+            font-weight: 600;
+        }
+
+        /* Alert boxes */
+        .alert-box {
+            padding: 2rem;
+            background: rgba(26, 31, 58, 0.6);
+            border-left: 4px solid var(--neural-accent);
+            margin: 2rem 0;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .problem-box {
+            border-left-color: var(--neural-warn);
+        }
+
+        .success-box {
+            border-left-color: var(--neural-success);
+        }
+
+        /* Lists */
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        li {
+            margin: 0.75rem 0;
+            color: var(--text-secondary);
+        }
+
+        /* Code blocks */
+        pre {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        code {
+            font-family: 'Courier New', monospace;
+            color: var(--neural-electric);
+            font-size: 0.9rem;
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: rgba(26, 31, 58, 0.4);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        th {
+            background: rgba(99, 102, 241, 0.2);
+            color: var(--neural-bright);
+            font-weight: 600;
+        }
+
+        td {
+            color: var(--text-secondary);
+        }
+
+        /* Buttons and links */
+        .cta-section {
+            text-align: center;
+            margin: 4rem 0;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(34, 211, 238, 0.1));
+            border-radius: 16px;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--neural-accent), var(--neural-bright));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: var(--glow);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.6);
+        }
+
+        .btn-secondary {
+            background: rgba(99, 102, 241, 0.2);
+            border: 1px solid var(--neural-accent);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(99, 102, 241, 0.3);
+        }
+
+        /* Quote styling */
+        blockquote {
+            font-size: 1.3rem;
+            font-style: italic;
+            padding: 2rem;
+            margin: 2rem 0;
+            background: rgba(99, 102, 241, 0.05);
+            border-left: 4px solid var(--neural-electric);
+            border-radius: 0 8px 8px 0;
+            color: var(--neural-bright);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 5rem;
+            border-top: 1px solid rgba(99, 102, 241, 0.2);
+            color: var(--text-secondary);
+        }
+
+        .footer-signature {
+            font-size: 1.2rem;
+            color: var(--neural-bright);
+            margin-top: 1rem;
+            font-weight: 600;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .btn-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+
+        /* Step cards */
+        .step-card {
+            background: rgba(26, 31, 58, 0.6);
+            padding: 2rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .step-card:hover {
+            border-color: var(--neural-accent);
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.2);
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--neural-accent), var(--neural-electric));
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: 700;
+            margin-right: 1rem;
+        }
+
+        /* Emphasis text */
+        strong {
+            color: var(--neural-electric);
+            font-weight: 600;
+        }
+
+        em {
+            color: var(--neural-bright);
+        }
+    </style>
+</head>
+<body>
+    <div class="neural-bg"></div>
+    
+    <header>
+        <div class="brain-icon">🧠</div>
+        <h1>NeuroRewire-Youth</h1>
+        <p class="tagline">An open-source framework to reprogram youth mindset, habits, and intelligence through controlled observation, content consumption, and ethical self-mastery.</p>
+        <div class="creator">Created & Curated by: <strong>Aryan Giri</strong></div>
+    </header>
+
+    <div class="container">
+        <section>
+            <h2>🚨 The Core Problem</h2>
+            <div class="alert-box problem-box">
+                <p>The human brain is not logical by default — it is <strong>adaptive</strong>.</p>
+                <p style="margin-top: 1rem;">If a person:</p>
+                <ul>
+                    <li>Hears negative things about themselves repeatedly</li>
+                    <li>Lives in a discouraging or toxic environment</li>
+                    <li>Is exposed daily to low-quality content, fear, or distraction</li>
+                </ul>
+                <p>The brain <strong>starts believing it</strong>, even when it's completely fake.</p>
+                <p style="margin-top: 1rem;"><strong>This is not weakness. This is how the brain is designed.</strong></p>
+            </div>
+        </section>
+
+        <section>
+            <h2>🧠 Why the Brain Believes Fake Stuff</h2>
+            <p>From neuroscience and psychology:</p>
+            <ul>
+                <li>The brain trusts <strong>repetition over truth</strong></li>
+                <li>The subconscious does not verify facts — it absorbs patterns</li>
+                <li>Whatever is heard or seen frequently becomes a <em>belief</em></li>
+                <li>Beliefs silently control behavior, motivation, and identity</li>
+            </ul>
+            <blockquote>
+                "You're lazy"<br>
+                "You're average"<br>
+                "You can't do it"
+            </blockquote>
+            <p>The brain accepts it as reality.</p>
+        </section>
+
+        <section>
+            <h2>❌ The Limitation of the Old Education System</h2>
+            <ul>
+                <li>It does not teach <strong>how the brain works</strong></li>
+                <li>It ignores mindset, belief loops, and habit formation</li>
+                <li>It rewards memorization, not thinking</li>
+                <li>It assumes environment is fixed — which is false</li>
+            </ul>
+            <p style="margin-top: 1.5rem;">You cannot always change:</p>
+            <ul>
+                <li>Family</li>
+                <li>Society</li>
+                <li>School system</li>
+                <li>Surroundings</li>
+            </ul>
+            <p style="margin-top: 1.5rem;">But you <strong>can</strong> change what your brain consumes.</p>
+        </section>
+
+        <section>
+            <h2>✅ The NeuroRewire Insight</h2>
+            <div class="alert-box success-box">
+                <blockquote style="background: transparent; border: none; padding: 0;">
+                    <strong>If you can't change your environment, change your observation.</strong><br>
+                    <strong>If observation changes, belief changes.</strong><br>
+                    <strong>If belief changes, behavior follows.</strong>
+                </blockquote>
+                <p style="margin-top: 1rem;">This is the foundation of <strong>NeuroRewire-Youth</strong>.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>🔁 The Best & Easiest Rewiring Method</h2>
+            <h3>🎧 Personalized Music-Based Brain Programming</h3>
+            <p>Music is one of the fastest ways to influence the subconscious:</p>
+            <ul>
+                <li>It bypasses logical resistance</li>
+                <li>Rhythm + repetition = deep imprinting</li>
+                <li>Repeated lyrics become internal self-talk</li>
+                <li>Motivation becomes automatic, not forced</li>
+            </ul>
+            <p style="margin-top: 1.5rem;">Instead of fighting laziness or bad habits, you <strong>overwrite them</strong>.</p>
+        </section>
+
+        <section>
+            <h2>🎵 How to Use AI Songs for NeuroRewiring</h2>
+            
+            <div class="step-card">
+                <h3><span class="step-number">1</span>Generate Personalized Lyrics Using AI</h3>
+                <p>Use ChatGPT or any AI lyrics generator with the following prompt:</p>
+                <pre><code>Create a high-energy motivational song for &lt;Your Name&gt;.
+The song should reprogram mindset, discipline, focus, and confidence.
+
+Goals to include:
+- Daily workout and physical discipline
+- Learning deeply and mastering chosen skills
+- Staying ethical and avoiding bad habits
+- Respect for God, humanity, and humility (no ego)
+- Strong willpower, focus, and consistency
+- Belief that &lt;Your Name&gt; is intelligent, capable, and improving daily
+
+Style:
+- Modern motivational rap / trap / EDM
+- Powerful, confident, uplifting
+- Repetitive affirmations
+- Easy to listen to daily
+
+Structure:
+- Intro (spoken motivation, 5–10 sec)
+- Verse 1 (discipline & growth)
+- Verse 2 (skills, ethics, focus)
+- Chorus (repeating identity & belief)
+- Outro (calm but confident)</code></pre>
+            </div>
+
+            <div class="step-card">
+                <h3><span class="step-number">2</span>Example Lyrics (Generic Template)</h3>
+                <p><strong>Intro (5–10 sec – Spoken, energetic)</strong></p>
+                <blockquote>
+                    "&lt;Your Name&gt;!<br>
+                    This is YOUR time.<br>
+                    Focused. Disciplined. Unstoppable.<br>
+                    Let's go."
+                </blockquote>
+
+                <p style="margin-top: 2rem;"><strong>Verse 1 (20–30 sec) 🎤</strong></p>
+                <blockquote>
+                    "&lt;Your Name&gt;, you're a genius, every day you grow smarter,<br>
+                    Mind sharp, skills sharper, every goal you'll conquer.<br>
+                    Daily workout, daily grind, every habit aligned,<br>
+                    Stay clean, stay wise, leave distractions behind."
+                </blockquote>
+
+                <p style="margin-top: 2rem;"><strong>Verse 2 (20–30 sec) 🎤</strong></p>
+                <blockquote>
+                    "Learning every day, focused mind on track,<br>
+                    Strong discipline, never falling back.<br>
+                    Ethics in my heart, ego under control,<br>
+                    Respect God, serve humanity — that's the goal."
+                </blockquote>
+            </div>
+
+            <div class="step-card">
+                <h3><span class="step-number">3</span>Convert Lyrics into a Real Song</h3>
+                <ul>
+                    <li>Go to <strong>Suno AI</strong> or any AI music generator</li>
+                    <li>Paste the generated lyrics</li>
+                    <li>Choose a style (rap / motivational / EDM)</li>
+                    <li>Generate the song</li>
+                </ul>
+            </div>
+
+            <div class="step-card">
+                <h3><span class="step-number">4</span>Daily Usage Protocol</h3>
+                <ul>
+                    <li>Listen once in the <strong>morning</strong></li>
+                    <li>Once when feeling <strong>lazy or distracted</strong></li>
+                    <li>Once before <strong>sleep</strong></li>
+                </ul>
+                <p style="margin-top: 1rem;">No force. No struggle. The brain slowly accepts this identity.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>🧬 Why This Works Better Than Motivation</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Motivation</th>
+                        <th>NeuroRewire</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Temporary</td>
+                        <td>Long-term</td>
+                    </tr>
+                    <tr>
+                        <td>Needs willpower</td>
+                        <td>Becomes automatic</td>
+                    </tr>
+                    <tr>
+                        <td>Fights habits</td>
+                        <td>Replaces habits</td>
+                    </tr>
+                    <tr>
+                        <td>Conscious effort</td>
+                        <td>Subconscious programming</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2>🛡️ Ethics & Responsibility</h2>
+            <div class="alert-box">
+                <p>NeuroRewire-Youth is built on:</p>
+                <ul>
+                    <li>Humility over ego</li>
+                    <li>Skill with ethics</li>
+                    <li>Intelligence with humanity</li>
+                    <li>Power without misuse</li>
+                </ul>
+                <p style="margin-top: 1rem;"><strong>This framework is for self-mastery, not manipulation of others.</strong></p>
+            </div>
+        </section>
+
+        <section>
+            <h2>🌱 Open-Source Vision</h2>
+            <p>This project is open for:</p>
+            <ul>
+                <li>Students</li>
+                <li>Educators</li>
+                <li>Researchers</li>
+                <li>Builders</li>
+            </ul>
+            <p style="margin-top: 1rem;">Contributions, improvements, and research are welcome.</p>
+        </section>
+
+        <section class="cta-section">
+            <h2>🚀 Get Started</h2>
+            <p style="margin-top: 1rem; color: var(--text-secondary);">Use these AI tools to create your personalized brain rewiring journey</p>
+            <div class="btn-group">
+                <a href="https://chat.openai.com" target="_blank" class="btn">ChatGPT - Generate Lyrics</a>
+                <a href="https://suno.ai" target="_blank" class="btn">Suno AI - Create Music</a>
+                <a href="https://github.com/giriaryan694-a11y/NeuroRewire-Youth" target="_blank" class="btn btn-secondary">GitHub Repository</a>
+            </div>
+        </section>
+
+        <section>
+            <blockquote style="text-align: center; font-size: 1.5rem;">
+                Youth does not lack intelligence.<br>
+                It lacks the right inputs.<br>
+                Fix the inputs, and intelligence emerges naturally.
+            </blockquote>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 NeuroRewire-Youth | Open Source Framework</p>
+        <p class="footer-signature">— Aryan Giri</p>
+    </footer>
+</body>
+</html>
